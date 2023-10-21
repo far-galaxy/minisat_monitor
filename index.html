@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <link href="style.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div id="notSupported">Web Serial не поддерживается на этом устройстве. Проверьте, что у вас Chrome не менее 78 версии или включён флаг #enable-experimental-web-platform-features в chrome://flags</div>
+        <div>
+            <button id="connect" onClick="connect()">Подключиться</button>
+            <select id="baudrate">
+                <option>9600</option>
+                <option>115200</option>
+            </select>
+        </div>
+        <div>
+            <input id="input" type="text" onKeyPress="handle(event)" disabled />
+            <button id="sendButton" onClick="send()" disabled>Отправить</button>
+            <button id="sendButton" onClick="download()">Скачать телеметрию сессии</button>
+        </div>
+        <div id="error"></div>
+        <div class="data">
+            <div id="time" style="color: green;"></div>
+            <div id="pres" style="color: blue;"></div>
+            <div id="temp" style="color: red;"></div>
+        </div>
+        <details>
+            <summary>Графики</summary>
+            <div class="graph">
+                <canvas id="p_chart" width="250px" height="250px" style="border:3px solid"></canvas>
+            </div>
+            <div class="graph">
+                <canvas id="t_chart" width="250px" height="250px" style="border:3px solid"></canvas>
+            </div>
+            <div class="graph">
+                <canvas id="a_chart" width="250px" height="250px" style="border:3px solid"></canvas>
+            </div>
+            <canvas id="axes" width="250px" height="250px" style="border:3px solid"></canvas>
+        </details>
+        <hr>
+        <div id="log"></div>
+    </div>
+    <script src="source.js"></script>
+</body>
+
+</html>
